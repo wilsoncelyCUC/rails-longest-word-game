@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h1 class="pt-5">New game</h1>
+  <p>This is your grid =></p>
+  <div class="text-center">
+    <ul class="list-inline d-flex justify-content-between">
+      <% @grid = @letters.each do |letter|  %>
+     <div class="row">
+      <div class="col-12 m-1">
+        <li class="list-inline-item text-light"> <span class="border px-3 py-2 bg-primary "> <%=letter%></span></li>
+      </div>
+     </div>
+      <%end %>
+    </ul>
+    <div id="intro">
+    <p>What is the longest word you can find?</p>
+    </div>
+    <form class="row justify-content-center pb-5" action="/score" method="post">
+      <div class="d-flex justify-content-between col-12">
+        <input type="input" class="form-control flex-grow-1" name="word" placeholder="type your word">
+        <input type="submit" class="btn btn-primary rounded-right ms-2">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :letter, @letters %>
+      </div>
+   </form>
+  </div>
+
+</div>
